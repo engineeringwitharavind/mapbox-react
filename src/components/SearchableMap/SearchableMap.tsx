@@ -4,8 +4,10 @@ import Map, {
   Marker,
   MarkerDragEvent,
   NavigationControl,
+  GeolocateControl,
 } from "react-map-gl";
-import { MAPBOX_TOKEN } from "../MapView/MapView";
+import { MAPBOX_TOKEN } from "../App/App";
+import Geocoder from "./GeoCoder";
 
 function SearchableMap() {
   const [marker, setMarker] = useState({
@@ -69,7 +71,20 @@ function SearchableMap() {
             onDrag={onMarkerDrag}
             onDragEnd={onMarkerDragEnd}
           ></Marker>
-          <NavigationControl />
+          <NavigationControl position="bottom-right" />
+          <GeolocateControl
+            trackUserLocation
+            position="top-left"
+            onGeolocate={(event) =>
+              setMarker({
+                ...marker,
+                longitude: event.coords.longitude,
+                latitude: event.coords.latitude,
+                zoom: 14,
+              })
+            }
+          />
+          <Geocoder />
         </Map>
       )}
     </>

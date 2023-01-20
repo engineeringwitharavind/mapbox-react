@@ -1,9 +1,7 @@
 import React from "react";
 import Map, { Marker } from "react-map-gl";
+import { MAPBOX_TOKEN } from "../App/App";
 import "./MapView.css";
-
-export const MAPBOX_TOKEN =
-  "pk.eyJ1IjoiYXJhdmluZC1reXJvIiwiYSI6ImNsZDFobjhtajBkNjI0MG55OHVlZGxodjkifQ.XfCz7kj5qmjNEnxsKVOcgQ";
 
 function MapView() {
   const [viewport, setViewport] = React.useState({
