@@ -18,11 +18,11 @@ function SearchableMap() {
   const [, logEvents] = useState<Record<string, LngLat>>({});
 
   React.useEffect(() => {
-    navigator.geolocation.getCurrentPosition((position) => {
+    navigator.geolocation.getCurrentPosition((event) => {
       setMarker({
         ...marker,
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude,
+        latitude: event.coords.latitude,
+        longitude: event.coords.longitude,
         zoom: 14,
       });
     });
@@ -58,7 +58,7 @@ function SearchableMap() {
       {marker.latitude && marker.longitude && (
         <Map
           initialViewState={marker}
-          mapStyle="mapbox://styles/mapbox/streets-v9"
+          mapStyle="mapbox://styles/mapbox/streets-v12"
           mapboxAccessToken={MAPBOX_TOKEN}
           style={{ width: 700, height: 500 }}
         >
