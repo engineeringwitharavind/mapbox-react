@@ -1,5 +1,5 @@
 import React from "react";
-import { TextField, Button } from "@material-ui/core";
+import { TextField, Button } from "@mui/material";
 import SearchableMap from "../SearchableMap/SearchableMap";
 
 interface FormState {

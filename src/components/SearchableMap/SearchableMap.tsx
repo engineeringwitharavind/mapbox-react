@@ -74,7 +74,7 @@ function SearchableMap() {
           <NavigationControl position="bottom-right" />
           <GeolocateControl
             trackUserLocation
-            position="top-left"
+            position="bottom-right"
             onGeolocate={(event) =>
               setMarker({
                 ...marker,
