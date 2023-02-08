@@ -1,32 +1,40 @@
-import React, { useState } from "react";
-import { TextField } from "@mui/material";
+import { ReactNode, useState } from "react";
+import { TextField, Button, ListItem, ListItemText } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 import "./AutocompleteSearch.css";
 
-interface Props {
-  options: string[];
-}
+function AutocompleteSearch() {
+  const [options] = useState<string[]>(["Option 1", "Option 2", "Option 3"]);
+  const [lastOption] = useState<ReactNode>(
+    <Button variant="contained">Add New Option</Button>
+  );
 
-function AutocompleteSearch({ options }: Props) {
-  const [inputValue, setInputValue] = useState("");
+  const handleClick = () => {
+    console.log("Add New Option clicked");
+  };
 
   return (
     <Autocomplete
+      sx={{ width: 300 }}
       options={options}
-      getOptionLabel={(option) => option}
-      style={{ width: 300 }}
       renderInput={(params) => (
-        <TextField
-          {...params}
-          label="Search"
-          variant="outlined"
-          value={inputValue}
-          onChange={(event: React.ChangeEvent<any>) =>
-            setInputValue(event.target.value)
-          }
-          InputProps={{ ...params.InputProps, type: "search" }}
-        />
+        <TextField {...params} label="Choose option" variant="outlined" />
       )}
+      renderOption={(prop, option) => option}
+      renderGroup={(params) => (
+        <>
+          {Array.isArray(params.children)
+            ? params.children.map((option, index) => (
+                <ListItem key={index}>
+                  <ListItemText primary={option} />
+                </ListItem>
+              ))
+            : null}
+          <ListItem onClick={handleClick}>{lastOption}</ListItem>
+        </>
+      )}
+      groupBy={(option) => "Group"}
+      getOptionLabel={(option) => option}
     />
   );
 }
