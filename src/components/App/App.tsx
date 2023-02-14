@@ -1,14 +1,14 @@
 import "mapbox-gl/dist/mapbox-gl.css";
-import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import "./App.css";
-import AutocompleteSearch from "../AutocompleteSearch/AutocompleteSearch";
+import PlotMap from "../SearchableMap/PlotMap";
 
-export const MAPBOX_TOKEN = "";
+export const MAPBOX_TOKEN =
+  "pk.eyJ1IjoiYXJhdmluZC1reXJvIiwiYSI6ImNsZDhobXBnOTAwNXUzbm53cjBrNG9hcmsifQ.UqTaW425cc4HhwpV_fQ82g";
 
 function App() {
   return (
     <div className="App">
-      <AutocompleteSearch />
+      <PlotMap />
     </div>
   );
 }
