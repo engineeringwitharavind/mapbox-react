@@ -30,12 +30,12 @@ function SearchableMap() {
   }, []);
 
   const onMarkerDragStart = useCallback((event: MarkerDragEvent) => {
-    logEvents((_events) => ({ ..._events, onDragStart: event.lngLat }));
+    logEvents((events) => ({ ...events, onDragStart: event.lngLat }));
   }, []);
 
   const onMarkerDrag = useCallback(
     (event: MarkerDragEvent) => {
-      logEvents((_events) => ({ ..._events, onDrag: event.lngLat }));
+      logEvents((events) => ({ ...events, onDrag: event.lngLat }));
       console.log("onMarkerDrag.longitude", event.lngLat.lng);
       console.log("onMarkerDrag.latitude", event.lngLat.lat);
 
@@ -50,7 +50,7 @@ function SearchableMap() {
   );
 
   const onMarkerDragEnd = useCallback((event: MarkerDragEvent) => {
-    logEvents((_events) => ({ ..._events, onDragEnd: event.lngLat }));
+    logEvents((events) => ({ ...events, onDragEnd: event.lngLat }));
   }, []);
 
   return (
